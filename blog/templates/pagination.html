@@ -1,0 +1,18 @@
+<!--
+AUTHOR      :   Robert James Patterson
+DATE        :   11/24/18
+SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
+-->
+<div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?page={{ page.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ page.number }} of {{ page.paginator.num_pages }}.
+        </span>
+        {% if page.has_next %}
+            <a href="?page={{ page.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>

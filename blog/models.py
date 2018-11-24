@@ -1,5 +1,7 @@
 """
- 
+AUTHOR      :   Robert James Patterson
+DATE        :   11/24/18
+SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
 """
 from django.db import models
 from django.utils import timezone
@@ -29,7 +31,7 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     objects = models.Manager() # The default manager
     published = PublishedManager() # Our custom manager
-         
+
     class Meta:
         ordering = ('-publish',)
 
@@ -41,3 +43,4 @@ class Post(models.Model):
 
     def __str__(self):
         return  self.title
+        
