@@ -1,6 +1,6 @@
 <!--
 AUTHOR      :   Robert James Patterson
-DATE        :   11/24/18
+DATE        :   11/26/18
 SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
 -->
 {% extends "blog/base.html" %}
@@ -20,5 +20,5 @@ SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
         </p>
         {{ post.body|truncatewords:30|linebreaks }}
     {% endfor %}
-    {% include "pagination.html" with page=posts %}
+    {% include "pagination.html" with page=page_obj %}
 {% endblock %}

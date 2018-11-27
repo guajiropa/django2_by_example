@@ -1,6 +1,6 @@
 """
 AUTHOR      :   Robert James Patterson
-DATE        :   11/24/18
+DATE        :   11/26/18
 SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
 """
 from django.db import models
