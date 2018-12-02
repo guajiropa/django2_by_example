@@ -119,3 +119,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#######################
+# EMAIL CONFIGURATION #
+#######################
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'thepattersonthree@gmail.com'
+EMAIL_HOST_PASSWORD = 'VV02c!3531'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
