@@ -120,9 +120,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 #######################
 # EMAIL CONFIGURATION #
 #######################
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'thepattersonthree@gmail.com'
 EMAIL_HOST_PASSWORD = 'VV02c!3531'

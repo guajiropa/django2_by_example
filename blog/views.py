@@ -1,9 +1,10 @@
 """
 AUTHOR      :   Robert James Patterson
-DATE        :   11/26/18
+DATE        :   12/02/18
 SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
 """
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from .forms import EmailPostForm
@@ -25,6 +26,7 @@ def post_detail(request, year, month, day, post):
 def post_share(request, post_id):
     # get post by id
     post = get_object_or_404(Post, id=post_id, status='published')
+    sent = False
 
     if request.method == 'POST':
         # Form was submitted
@@ -32,7 +34,22 @@ def post_share(request, post_id):
         if form.is_valid():
             # Form fields have passed validatiion
             cd = form.cleaned_data
-            # ... send email
+            # Get post URL
+            post_url = request.build_absolute_uri(post.get_absolute_url())
+            # Build email
+            subject = '{} ({}) recommends you reading "{}"'.format(cd['name'], 
+                                                                cd['email'], 
+                                                                post.title)
+
+            message = 'Read "{}" at {}\n\n{}\'s comments: {}'.format(post.title, 
+                                                                    post.url, 
+                                                                    cd['name'], 
+                                                                    cd['comments'])
+            # Send email
+            send_mail(subject, message, 'thepattersonthree@gmail.com', [cd['to']])
+            sent = True
     else:
+        # Return the form
         form = EmailPostForm()
+
     return render(request, 'blog/post/share.html', {'post': post, 'form': form})
