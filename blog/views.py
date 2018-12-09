@@ -7,8 +7,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
-from .forms import EmailPostForm
-from .models import Post
+from .forms import EmailPostForm, CommentForm
+from .models import Post, Comment
 
 class PostListView(ListView):
     
@@ -21,6 +21,10 @@ def post_detail(request, year, month, day, post):
 
     post = get_object_or_404(Post, slug=post, status='published', publish__year=year, 
                             publish__month=month, publish__day=day)
+    # List all active comments for this post
+    
+
+    
     return render(request, 'blog/post/detail.html', {'post': post})
 
 def post_share(request, post_id):
@@ -42,7 +46,7 @@ def post_share(request, post_id):
                                                                 post.title)
 
             message = 'Read "{}" at {}\n\n{}\'s comments: {}'.format(post.title, 
-                                                                    post.url, 
+                                                                    post_url, 
                                                                     cd['name'], 
                                                                     cd['comments'])
             # Send email
@@ -52,4 +56,6 @@ def post_share(request, post_id):
         # Return the form
         form = EmailPostForm()
 
-    return render(request, 'blog/post/share.html', {'post': post, 'form': form})
+    return render(request, 'blog/post/share.html', {'post': post, 
+                                                    'form': form,
+                                                    'sent': sent})

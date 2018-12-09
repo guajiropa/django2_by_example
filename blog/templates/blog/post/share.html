@@ -1,0 +1,29 @@
+<!--
+AUTHOR      :   Robert James Patterson
+DATE        :   12/03/18
+SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
+-->
+{% extends "blog/base.html" %}
+
+{% block title %}Share a post{% endblock %}
+
+{% block content %}
+    {% if sent %}
+        <h1>E-mail was successfully sent</h1>
+        <p>
+            "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}
+        </p>
+    {% else %}
+        <h1>Share "{{ post.title }}" by email</h1>
+        <form action="." method="post">
+            {% for field in form %}
+                <div>
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+            <input type="submit" value="Send email">
+        </form>
+    {% endif %}    
+{% endblock%}
