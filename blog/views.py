@@ -1,6 +1,6 @@
 """
 AUTHOR      :   Robert James Patterson
-DATE        :   12/02/18
+DATE        :   12/15/18
 SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
 """
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
