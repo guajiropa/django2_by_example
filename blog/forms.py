@@ -12,6 +12,8 @@ class EmailPostForm(forms.Form):
     to = forms.EmailField()
     comments = forms.CharField(required=False, widget=forms.Textarea)
 
+    def __str__(self):
+        return 'This is an \'EmailPostForm\' object.'
 
 class CommentForm(forms.ModelForm):
     class Meta:

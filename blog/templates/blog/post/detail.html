@@ -18,4 +18,7 @@ SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
             Share this post
         </a>
     </p>
+    {% with comments.count as total_comments %}
+    <h2> {{ total_comments }} comment{{ total_comments|pluralize }} </h2>
+    {% endwith %}
 {% endblock %}
