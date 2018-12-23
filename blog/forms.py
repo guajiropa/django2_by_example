@@ -16,6 +16,7 @@ class EmailPostForm(forms.Form):
         return 'This is an \'EmailPostForm\' object.'
 
 class CommentForm(forms.ModelForm):
+    
     class Meta:
         model = Comment
         fields = ('name', 'email', 'body')
