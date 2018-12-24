@@ -1,6 +1,6 @@
 <!--
 AUTHOR      :   Robert James Patterson
-DATE        :   11/26/18
+DATE        :   12/23/18
 SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
 -->
 {% extends "blog/base.html" %}
@@ -15,6 +15,7 @@ SYNOPSIS    :   Work thru files for 'Dajngo 2 by Example' by Packt Publishing
                 {{ post.title }}
             </a>
         </h2>
+        <p class="tags">Tags: {{ post.tags.all|join:", " }}</p>
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
